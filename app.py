@@ -75,8 +75,12 @@ CUSTOM_CSS = """
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 
-.stApp { background-color: var(--porcelain); }
-.block-container { max-width: 1080px; padding-top: 2.2rem; }
+.stApp {
+  background-color: var(--porcelain);
+  background-image: radial-gradient(circle, rgba(45,106,106,0.11) 1px, transparent 1.6px);
+  background-size: 24px 24px;
+}
+.block-container { max-width: 1100px; padding-top: 2.2rem; }
 html, body, [class*="css"] { font-family: 'Inter', sans-serif; color: var(--ink); }
 
 .eyebrow {
@@ -90,20 +94,32 @@ html, body, [class*="css"] { font-family: 'Inter', sans-serif; color: var(--ink)
 .hero-title {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
-  font-size: 2.5rem;
-  line-height: 1.08;
+  font-size: 2.8rem;
+  letter-spacing: -0.01em;
+  line-height: 1.04;
   color: var(--ink);
   margin: 0 0 0.7rem 0;
 }
 .hero-sub {
   font-size: 1.02rem;
   color: var(--ink-soft);
-  max-width: 620px;
+  max-width: 560px;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.55;
 }
-.hairline { height: 1px; background: var(--line); margin: 1.5rem 0 1.7rem 0; }
+.hairline { height: 1px; background: var(--line); margin: 1.7rem 0 1.7rem 0; }
 .hairline-thin { height: 1px; background: var(--line); margin: 0.9rem 0; }
+
+.stat-strip { display: flex; gap: 2.4rem; margin: 1.5rem 0 1.1rem 0; flex-wrap: wrap; }
+.stat-item { display: flex; flex-direction: column; }
+.stat-num { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.6rem; color: var(--ink); line-height: 1.1; }
+.stat-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; letter-spacing: 0.09em; color: var(--ink-soft); margin-top: 0.2rem; }
+
+.legend-row { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+.legend-chip { display: flex; align-items: center; gap: 0.42rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; letter-spacing: 0.03em; color: var(--ink-soft); }
+.legend-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+
+.hero-fig-cap { text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.66rem; letter-spacing: 0.1em; color: var(--ink-soft); margin-top: 0.6rem; }
 
 .notice-card {
   background: #F5EBD8;
@@ -202,19 +218,34 @@ html, body, [class*="css"] { font-family: 'Inter', sans-serif; color: var(--ink)
   padding: 0.2rem 0.55rem; border-radius: 3px;
 }
 
-.empty-state { text-align: center; padding: 2.2rem 0 1rem 0; }
-.empty-lens { width: 200px; height: 200px; border-radius: 50%; border: 2px dashed var(--line); margin: 0 auto 1.1rem auto; }
-.empty-text { color: var(--ink-soft); font-family: 'IBM Plex Mono', monospace; font-size: 0.84rem; letter-spacing: 0.04em; }
+.empty-state { text-align: center; padding: 1.6rem 0 1rem 0; }
+.empty-text { color: var(--ink-soft); font-family: 'IBM Plex Mono', monospace; font-size: 0.84rem; letter-spacing: 0.04em; margin-top: 0.7rem; }
 
 .side-title { font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; color: var(--ink-soft); margin: 0.5rem 0 0.6rem 0; }
 .spec-row { display: flex; justify-content: space-between; font-size: 0.82rem; padding: 0.2rem 0; color: var(--ink); }
-.catalog-row { display: flex; align-items: center; gap: 0.55rem; padding: 0.25rem 0; font-size: 0.82rem; color: var(--ink); }
+.catalog-row { display: flex; align-items: center; gap: 0.55rem; padding: 0.3rem 0.3rem; border-radius: 4px; font-size: 0.82rem; color: var(--ink); transition: background 0.15s ease; }
+.catalog-row:hover { background: var(--paper); }
 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
 
 .error-card {
   background: #FBE7E1; border-left: 3px solid #D85C3E;
   padding: 1rem 1.2rem; border-radius: 4px; font-size: 0.9rem; line-height: 1.5;
 }
+
+.section-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.5rem; color: var(--ink); margin: 0.4rem 0 0.9rem 0; }
+.section-body { font-size: 0.96rem; color: var(--ink-soft); line-height: 1.65; max-width: 760px; margin: 0 0 0.8rem 0; }
+
+.process-row { display: flex; gap: 1.8rem; border-top: 1px solid var(--line); padding-top: 1.3rem; margin-top: 0.5rem; flex-wrap: wrap; }
+.process-step { flex: 1; min-width: 160px; }
+.process-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); display: inline-block; margin-bottom: 0.7rem; }
+.process-num { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--teal); letter-spacing: 0.1em; margin: 0; }
+.process-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.02rem; margin: 0.3rem 0 0.45rem 0; color: var(--ink); }
+.process-desc { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5; margin: 0; }
+
+.compare-row { display: flex; gap: 1rem; margin-top: 0.8rem; flex-wrap: wrap; }
+.compare-card { flex: 1; min-width: 220px; background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 1.1rem 1.3rem; }
+.compare-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.64rem; letter-spacing: 0.07em; color: var(--ink-soft); margin: 0; }
+.compare-value { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.7rem; color: var(--ink); margin: 0.35rem 0 0 0; }
 </style>
 """
 
@@ -224,7 +255,7 @@ st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 # HELPERS
 # ============================================================
 
-def make_ring_svg(diameter=300, ticks=36, color="#2D6A6A"):
+def make_lens_svg(diameter=300, ticks=36, color="#2D6A6A", glass=False, crosshair=False):
     r_outer = diameter / 2
     r_major = r_outer - 10
     r_minor = r_outer - 6
@@ -240,8 +271,17 @@ def make_ring_svg(diameter=300, ticks=36, color="#2D6A6A"):
         y2 = cy + r_outer * math.sin(angle)
         w = 1.6 if major else 1.0
         parts.append(f'<line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" stroke="{color}" stroke-width="{w}" stroke-opacity="0.5"/>')
-    circle = f'<circle cx="{cx}" cy="{cy}" r="{r_outer-1}" fill="none" stroke="{color}" stroke-width="1" stroke-opacity="0.3"/>'
-    return f'<svg width="{diameter}" height="{diameter}">{circle}{"".join(parts)}</svg>'
+    fill = "url(#lensGlass)" if glass else "none"
+    defs = ""
+    if glass:
+        defs = f'<defs><radialGradient id="lensGlass" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="{color}" stop-opacity="0.18"/><stop offset="100%" stop-color="{color}" stop-opacity="0.02"/></radialGradient></defs>'
+    circle = f'<circle cx="{cx}" cy="{cy}" r="{r_outer-1}" fill="{fill}" stroke="{color}" stroke-width="1" stroke-opacity="0.32"/>'
+    cross = ""
+    if crosshair:
+        cl = r_outer * 0.16
+        cross = (f'<line x1="{cx-cl:.1f}" y1="{cy:.1f}" x2="{cx+cl:.1f}" y2="{cy:.1f}" stroke="{color}" stroke-width="1" stroke-opacity="0.45"/>'
+                 f'<line x1="{cx:.1f}" y1="{cy-cl:.1f}" x2="{cx:.1f}" y2="{cy+cl:.1f}" stroke="{color}" stroke-width="1" stroke-opacity="0.45"/>')
+    return f'<svg width="{diameter}" height="{diameter}">{defs}{circle}{cross}{"".join(parts)}</svg>'
 
 
 def pil_to_base64_square(img, size=320):
@@ -309,14 +349,41 @@ def overlay_gradcam(img, heatmap, alpha=0.4):
     return cv2.addWeighted(img_uint8, 1 - alpha, heatmap_colored, alpha, 0)
 
 # ============================================================
-# HEADER
+# HEADER — hero with decorative lens graphic + stats + legend
 # ============================================================
-st.markdown("""
-<p class="eyebrow">DERMOSCOPIC ANALYSIS &middot; NTCC PROJECT 2026</p>
-<h1 class="hero-title">Skin Lesion Reader</h1>
-<p class="hero-sub">Upload a dermoscopic photo of a skin lesion. The model classifies it across seven categories and shows exactly where it looked to make that call.</p>
-<div class="hairline"></div>
-""", unsafe_allow_html=True)
+hero_col1, hero_col2 = st.columns([1.35, 1], gap="large")
+
+with hero_col1:
+    st.markdown("""
+    <p class="eyebrow">DERMOSCOPIC ANALYSIS &middot; NTCC PROJECT 2026</p>
+    <h1 class="hero-title">Skin Lesion Reader</h1>
+    <p class="hero-sub">Upload a dermoscopic photo of a skin lesion. The model classifies it across seven categories and shows exactly where it looked to make that call.</p>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="stat-strip">
+      <div class="stat-item"><span class="stat-num">7</span><span class="stat-label">LESION&nbsp;CLASSES</span></div>
+      <div class="stat-item"><span class="stat-num">10,015</span><span class="stat-label">TRAINING&nbsp;IMAGES</span></div>
+      <div class="stat-item"><span class="stat-num">~87%</span><span class="stat-label">TEST&nbsp;ACCURACY</span></div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="legend-row">
+      <span class="legend-chip"><span class="legend-dot" style="background:#5F8262;"></span>Benign</span>
+      <span class="legend-chip"><span class="legend-dot" style="background:#C18A2E;"></span>Pre-cancerous</span>
+      <span class="legend-chip"><span class="legend-dot" style="background:#D85C3E;"></span>Malignant</span>
+    </div>
+    """, unsafe_allow_html=True)
+
+with hero_col2:
+    hero_svg = make_lens_svg(diameter=230, color="#2D6A6A", glass=True, crosshair=True)
+    st.markdown(f"""
+    <div style="display:flex; justify-content:center; padding-top:0.4rem;">{hero_svg}</div>
+    <p class="hero-fig-cap">FIG. 01 &mdash; DERMOSCOPIC VIEW</p>
+    """, unsafe_allow_html=True)
+
+st.markdown('<div class="hairline"></div>', unsafe_allow_html=True)
 
 st.markdown("""
 <div class="notice-card">
@@ -378,7 +445,7 @@ if uploaded_file is not None:
 
     with col_lens:
         photo_b64 = pil_to_base64_square(image, size=252)
-        ring_svg = make_ring_svg(diameter=300, color="#2D6A6A")
+        ring_svg = make_lens_svg(diameter=300, color="#2D6A6A", glass=False, crosshair=False)
         st.markdown(f"""
         <div class="lens-wrap">
           <div class="lens-ring">{ring_svg}</div>
@@ -445,12 +512,69 @@ if uploaded_file is not None:
         """, unsafe_allow_html=True)
 
 else:
-    st.markdown("""
+    empty_svg = make_lens_svg(diameter=190, color="#2D6A6A", glass=True, crosshair=True)
+    st.markdown(f"""
     <div class="empty-state">
-      <div class="empty-lens"></div>
+      <div style="display:flex; justify-content:center;">{empty_svg}</div>
       <p class="empty-text">UPLOAD A DERMOSCOPIC IMAGE TO RUN THE READ</p>
     </div>
     """, unsafe_allow_html=True)
 
+# ============================================================
+# ABOUT THIS PROJECT
+# ============================================================
+st.markdown('<div class="hairline"></div>', unsafe_allow_html=True)
+
+st.markdown("""
+<p class="eyebrow">ABOUT THIS PROJECT</p>
+<h2 class="section-title">Why a model, and why this dataset</h2>
+<p class="section-body">Skin cancer is one of the most common cancers worldwide. Melanoma makes up a small share of cases but causes most of the deaths, mostly because it is caught late. Dermatologists read these lesions visually using dermoscopy &mdash; this project asks whether a model trained on thousands of labelled dermoscopic photos can learn the same visual patterns, and whether it can show its reasoning clearly enough to be checked rather than just trusted blindly.</p>
+<p class="section-body">Built for the NTCC In-House Practical Training (B.Tech CSE, Semester 5, 2026) by Tanvi Jashoria and Md Ashraf, using the HAM10000 dataset &mdash; 10,015 dermoscopic images across seven lesion types, released by the International Skin Imaging Collaboration.</p>
+""", unsafe_allow_html=True)
+
+st.markdown('<p class="eyebrow" style="margin-top:1.8rem;">HOW IT WORKS</p>', unsafe_allow_html=True)
+st.markdown("""
+<div class="process-row">
+  <div class="process-step">
+    <span class="process-dot"></span>
+    <p class="process-num">01 &middot; UPLOAD</p>
+    <p class="process-name">Provide the image</p>
+    <p class="process-desc">A dermoscopic photo of the lesion goes in &mdash; JPG or PNG.</p>
+  </div>
+  <div class="process-step">
+    <span class="process-dot"></span>
+    <p class="process-num">02 &middot; NORMALIZE</p>
+    <p class="process-name">Standardize it</p>
+    <p class="process-desc">Resized to 224&times;224, pixel values scaled to [0, 1].</p>
+  </div>
+  <div class="process-step">
+    <span class="process-dot"></span>
+    <p class="process-num">03 &middot; CLASSIFY</p>
+    <p class="process-name">Score every class</p>
+    <p class="process-desc">EfficientNetB3 scores all seven lesion categories.</p>
+  </div>
+  <div class="process-step">
+    <span class="process-dot"></span>
+    <p class="process-num">04 &middot; EXPLAIN</p>
+    <p class="process-name">Show the evidence</p>
+    <p class="process-desc">Grad-CAM highlights the pixels that drove the call.</p>
+  </div>
+</div>
+""", unsafe_allow_html=True)
+
+st.markdown('<p class="eyebrow" style="margin-top:1.8rem;">MODEL PERFORMANCE</p>', unsafe_allow_html=True)
+st.markdown("""
+<div class="compare-row">
+  <div class="compare-card">
+    <p class="compare-label">BASELINE CNN &middot; TRAINED FROM SCRATCH</p>
+    <p class="compare-value">72&ndash;75%</p>
+  </div>
+  <div class="compare-card" style="border-left: 3px solid #2D6A6A;">
+    <p class="compare-label">EFFICIENTNETB3 &middot; TRANSFER LEARNING (USED HERE)</p>
+    <p class="compare-value">85&ndash;88%</p>
+  </div>
+</div>
+""", unsafe_allow_html=True)
+
 st.markdown('<div class="hairline-thin"></div>', unsafe_allow_html=True)
-st.markdown('<p style="text-align:center; color:#5B6566; font-size:0.8rem;">NTCC In-House Practical Training &middot; B.Tech CSE &middot; Semester 5 &middot; 2026</p>', unsafe_allow_html=True)
+st.markdown('<p style="text-align:center; color:#5B6566; font-size:0.8rem;">Built by Tanvi Jashoria &amp; Md Ashraf &middot; NTCC In-House Practical Training &middot; B.Tech CSE, Semester 5 &middot; 2026</p>', unsafe_allow_html=True)
