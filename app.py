@@ -90,6 +90,7 @@ html, body, [class*="css"] { font-family: 'Inter', sans-serif; color: var(--ink)
   text-transform: uppercase;
   color: var(--teal);
   margin-bottom: 0.5rem;
+  line-height: 1.6;
 }
 .hero-title {
   font-family: 'Space Grotesk', sans-serif;
